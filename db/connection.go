@@ -6,13 +6,15 @@ import (
 )
 
 var DNS = "host=localhost user=root password=mysecretpassword dbname=gorm port=5432"
-var db *gorm.DB
+var DB *gorm.DB
 var err error
 
 func Connect() (*gorm.DB, error) {
-	db, err = gorm.Open(postgres.Open(DNS), &gorm.Config{})
+	DB, err = gorm.Open(postgres.Open(DNS), &gorm.Config{})
 	if err != nil {
 		return nil, err
+	} else {
+		println("Connected to database")
 	}
-	return db, nil
+	return DB, nil
 }
