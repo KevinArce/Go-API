@@ -11,7 +11,7 @@ import (
 func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	
+
 	var users []models.User
 	db.DB.Find(&users)
 	json.NewEncoder(w).Encode(&users)
